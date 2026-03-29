@@ -72,7 +72,7 @@
       },
       {
         "Name": "task",
-        "Type": "TaskBoard.API.Models.TaskItem",
+        "Type": "TaskBoard.API.Models.TaskCreate",
         "IsRequired": true
       }
     ],

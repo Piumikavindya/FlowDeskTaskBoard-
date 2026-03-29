@@ -68,17 +68,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/TaskItem"
+                "$ref": "#/components/schemas/TaskCreate"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/TaskItem"
+                "$ref": "#/components/schemas/TaskCreate"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/TaskItem"
+                "$ref": "#/components/schemas/TaskCreate"
               }
             }
           }
@@ -178,27 +178,6 @@
   },
   "components": {
     "schemas": {
-      "Project": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "name": {
-            "type": "string",
-            "nullable": true
-          },
-          "tasks": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/TaskItem"
-            },
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
       "TaskCreate": {
         "type": "object",
         "properties": {
@@ -229,78 +208,6 @@
           "assignedUserId": {
             "type": "integer",
             "format": "int32"
-          }
-        },
-        "additionalProperties": false
-      },
-      "TaskItem": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "title": {
-            "type": "string",
-            "nullable": true
-          },
-          "description": {
-            "type": "string",
-            "nullable": true
-          },
-          "status": {
-            "type": "string",
-            "nullable": true
-          },
-          "priority": {
-            "type": "string",
-            "nullable": true
-          },
-          "dueDate": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "isArchived": {
-            "type": "boolean"
-          },
-          "projectId": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "project": {
-            "$ref": "#/components/schemas/Project"
-          },
-          "assignedUserId": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "assignedUser": {
-            "$ref": "#/components/schemas/User"
-          }
-        },
-        "additionalProperties": false
-      },
-      "User": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "name": {
-            "type": "string",
-            "nullable": true
-          },
-          "role": {
-            "type": "string",
-            "nullable": true
-          },
-          "assignedTasks": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/TaskItem"
-            },
-            "nullable": true
           }
         },
         "additionalProperties": false

@@ -4,13 +4,13 @@ namespace TaskBoard.API.Interfaces
 {
     public interface ITaskService
     {
-        Task<IEnumerable<TaskItem>> GetAllTasks();
+        Task<IEnumerable<GetAllTasks>> GetAllTasks();
 
         Task<TaskItem> GetTaskById(int id);
 
         Task<TaskItem> CreateTask(TaskItem task);
 
-        Task<TaskItem> UpdateTask(int id, TaskItem task);
+        Task<TaskItem> UpdateTask(int id, TaskCreate task);
 
         Task<bool> DeleteTask(int id);
 

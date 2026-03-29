@@ -46,7 +46,7 @@ namespace TaskBoard.API.Controllers
 
         [HttpPut]
         [Route("UpdateTask/{id}")]
-        public async Task<IActionResult> Update(int id, TaskItem task)
+        public async Task<IActionResult> Update(int id, TaskCreate task)
         {
             var updated = await _taskService.UpdateTask(id, task);
 

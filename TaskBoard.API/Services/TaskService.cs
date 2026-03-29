@@ -14,12 +14,20 @@ namespace TaskBoard.API.Services
             _context = context;
         }
 
-        public async Task<IEnumerable<TaskItem>> GetAllTasks()
+        public async Task<IEnumerable<GetAllTasks>> GetAllTasks()
         {
             return await _context.Tasks
-                .Include(t => t.Project)
-                .Include(t => t.AssignedUser)
-                .ToListAsync();
+        .Include(t => t.Project)
+        .Include(t => t.AssignedUser)
+        .Select(t => new GetAllTasks
+        {
+            Id = t.Id,
+            Title = t.Title,
+            Status = t.Status,
+            ProjectName = t.Project.Name,
+            AssignedUserName = t.AssignedUser.Name
+        })
+        .ToListAsync();
         }
 
         public async Task<TaskItem> GetTaskById(int id)
@@ -41,7 +49,7 @@ namespace TaskBoard.API.Services
             return task;
         }
 
-        public async Task<TaskItem> UpdateTask(int id, TaskItem updatedTask)
+        public async Task<TaskItem> UpdateTask(int id, TaskCreate updatedTask)
         {
             var task = await _context.Tasks.FindAsync(id);
 
